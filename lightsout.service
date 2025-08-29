@@ -1,0 +1,13 @@
+# /etc/systemd/system/lightsout.service
+[Unit]
+Description=daemong before shotdown
+DefaultDependencies=no
+Before=shutdown.target reboot.target halt.target poweroff.target
+
+[Service]
+Type=oneshot
+ExecStart=/path/to/script/example.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=halt.target reboot.target shutdown.target poweroff.target
